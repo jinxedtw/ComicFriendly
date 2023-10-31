@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.example.composedemo"
-    compileSdk = 33
+    namespace = "com.comic.app"
+    compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.composedemo"
-        minSdk = 24
-        targetSdk = 33
+        applicationId = "com.comic.friendly"
+        minSdk = 21
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -32,9 +32,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        allWarningsAsErrors = false
+        freeCompilerArgs += "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api"
     }
     buildFeatures {
         compose = true
+
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
@@ -47,17 +50,24 @@ android {
 }
 
 dependencies {
-    implementation(project(":base"))
+    implementation(project(":fetch"))
 
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.2")
+    // kotlin
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
+
+    // compose
+    implementation("androidx.activity:activity-compose:1.8.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
+
+    // 图片加载
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    // test
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")

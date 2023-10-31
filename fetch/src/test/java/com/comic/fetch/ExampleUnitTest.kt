@@ -1,4 +1,4 @@
-package com.example.base
+package com.comic.fetch
 
 import org.junit.Test
 

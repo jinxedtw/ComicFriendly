@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ComposeDemo"
+rootProject.name = "ComicFriendly"
 include(":app")
-include(":base")
+include(":fetch")
