@@ -1,4 +1,4 @@
-package com.comic.app.database
+package com.comic.fetch.database
 
 import androidx.room.TypeConverter
 import java.util.Calendar
