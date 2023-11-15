@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComicFriendly"
 include(":app")
 include(":fetch")
+include(":util")

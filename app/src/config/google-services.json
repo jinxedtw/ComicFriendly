@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "427391594370",
+    "project_id": "comicfriendly-ce3ef",
+    "storage_bucket": "comicfriendly-ce3ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427391594370:android:66d423636a45e15f00299b",
+        "android_client_info": {
+          "package_name": "com.comic.friendly"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr8N5itPyBr1aBU6U1doCQ6KNLUPvHIb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
