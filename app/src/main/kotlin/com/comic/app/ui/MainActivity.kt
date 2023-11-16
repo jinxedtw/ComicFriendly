@@ -1,7 +1,7 @@
 package com.comic.app.ui
 
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,6 +34,9 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.comic.app.R
 import com.comic.app.ui.theme.AppTheme
+import com.comic.fetch.ComicFetchManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +45,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    LearnModifier()
+                    LearnBaseWidget()
                 }
             }
         }
@@ -64,6 +68,7 @@ fun LearnModifier() {
 @Composable
 fun LearnBaseWidget() {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
 
     Column(
         modifier = Modifier
@@ -81,7 +86,14 @@ fun LearnBaseWidget() {
         Text(modifier = Modifier.align(Alignment.Start), text = "July 2021")
         Button(
             onClick = {
-                Toast.makeText(context, "This is Toast", Toast.LENGTH_SHORT).show()
+                scope.launch(Dispatchers.IO) {
+//                    ComicFetchManager.searchComic("王者").collect{
+//                        Log.i(ComicFetchManager.TAG,it.toString())
+//                    }
+
+                    val comic = ComicFetchManager.fetchComicInfo("https://ac.qq.com/Comic/comicInfo/id/650800")
+                    Log.i(ComicFetchManager.TAG, comic.toString())
+                }
             },
             modifier = Modifier.align(Alignment.End)
         ) {

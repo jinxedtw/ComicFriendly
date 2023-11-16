@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.ProcessLifecycleOwner
-import com.ac.util.ext.openLog
 
 class ComicFriendlyApplication : Application() {
     override fun onCreate() {
@@ -23,8 +22,6 @@ class ComicFriendlyApplication : Application() {
         val appObserver = ApplicationObserver()
         registerActivityLifecycleCallbacks(appObserver)
         ProcessLifecycleOwner.get().lifecycle.addObserver(appObserver)
-
-        openLog(true)
     }
 
     companion object {
