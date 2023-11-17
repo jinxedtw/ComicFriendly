@@ -132,6 +132,7 @@ dependencies {
     implementation(project(":util"))
 
     // kotlin
+    implementation("androidx.lifecycle:lifecycle-process:2.6.2")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     // compose
@@ -146,10 +147,6 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-config-ktx")
-    // moshi
-    implementation("com.squareup.moshi:moshi:1.14.0")
-    implementation("androidx.lifecycle:lifecycle-process:2.6.2")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
     // 图片加载
     implementation("io.coil-kt:coil-compose:2.4.0")
     // test

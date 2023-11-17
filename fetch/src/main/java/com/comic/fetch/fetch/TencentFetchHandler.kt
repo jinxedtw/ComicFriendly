@@ -35,7 +35,7 @@ internal object TencentFetchHandler : FetchHandler {
                 val comic = Comic().apply {
                     title = detail[i].select("strong").text()
                     cover = detail[i].select("img").attr("src")
-                    comicUrl = ComicUrl.TencentComicDetail + getComicId(detail[i].select("a").attr("href"))
+                    comicUrl = ComicUrl.TencentComicInfoUrl + getComicId(detail[i].select("a").attr("href"))
                     resourceFrom = TENCENT_SOURCE
                     updateTime = info[0].text()
                     author = info[2].text()
@@ -64,9 +64,11 @@ internal object TencentFetchHandler : FetchHandler {
         // 设置章节数
         val divChapter = doc.getElementsByAttributeValue("class", "chapter-page-all works-chapter-list")[0]
         val elementChapters: List<Element> = divChapter.getElementsByAttributeValue("target", "_blank")
+        val comicChapterUrls: MutableList<String> = arrayListOf()
         val comicChapters: MutableList<String> = arrayListOf()
         elementChapters.forEach {
             comicChapters.add(it.select("a").text())
+            comicChapterUrls.add("${ComicUrl.TencentComicChapterUrl}${it.select("a").attr("href")}")
         }
         val elementDescribe = doc.getElementsByAttributeValue("class", "works-intro-short ui-text-gray9")[0]
         // 设置状态
@@ -84,6 +86,7 @@ internal object TencentFetchHandler : FetchHandler {
             author = comicAuthor.select("a").attr("title")
             collections = "($collection)万"
             chapters = comicChapters
+            chaptersUrl = comicChapterUrls
             describe = elementDescribe.select("p").text()
             serialStatus = if (comicStatus == "已完结") {
                 comicStatus
@@ -98,6 +101,13 @@ internal object TencentFetchHandler : FetchHandler {
             point = elementPoint.select("strong")[0].text()
         }
     }
+
+    override suspend fun obtainComicImage(chapterUrl: String): Flow<String> {
+        return flow<String> {
+
+        }.flowOn(Dispatchers.IO)
+    }
+
 
     /**
      * 获取漫画ID

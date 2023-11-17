@@ -5,10 +5,13 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -27,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -45,7 +49,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    LearnBaseWidget()
+                    LearnModifier()
                 }
             }
         }
@@ -54,15 +58,28 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LearnModifier() {
-    Image(
-        modifier = Modifier
-            .wrapContentSize(align = Alignment.CenterStart)
-            .border(5.dp, Color.Blue, CircleShape)
-            .clip(CircleShape)
-            .rotate(180f),
-        painter = painterResource(id = R.drawable.ic_launcher_foreground),
-        contentDescription = "Icon Image"
-    )
+    Column(verticalArrangement = Arrangement.Top) {
+        Image(
+            modifier = Modifier
+                .wrapContentSize(align = Alignment.CenterStart)
+                .border(5.dp, Color.Blue, CircleShape)
+                .clip(CircleShape)
+                .rotate(180f),
+            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            contentDescription = "Icon Image"
+        )
+        Box(modifier = Modifier
+            .requiredSize(200.dp)
+            .background(Color.Blue)
+            .pointerInput(Unit) {
+                awaitPointerEventScope {
+                    while (true){
+                        val event = awaitPointerEvent()
+                        Log.d("PointerInputEvent", "event: ${event.type}")
+                    }
+                }
+            })
+    }
 }
 
 @Composable
@@ -90,7 +107,6 @@ fun LearnBaseWidget() {
 //                    ComicFetchManager.searchComic("王者").collect{
 //                        Log.i(ComicFetchManager.TAG,it.toString())
 //                    }
-
                     val comic = ComicFetchManager.fetchComicInfo("https://ac.qq.com/Comic/comicInfo/id/650800")
                     Log.i(ComicFetchManager.TAG, comic.toString())
                 }

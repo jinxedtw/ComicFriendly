@@ -42,4 +42,7 @@ dependencies {
     ksp("androidx.room:room-compiler:2.5.2")
     // jsoup
     implementation("org.jsoup:jsoup:1.13.1")
+    // moshi
+    implementation("com.squareup.moshi:moshi:1.14.0")
+    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.14.0")
 }

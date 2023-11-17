@@ -42,8 +42,19 @@ object ComicFetchManager {
 
     /**
      * 获取漫画详情信息
+     *
+     * @param url:漫画详情页面地址
      */
     suspend fun fetchComicInfo(url: String): Comic {
         return fetchHandle.fetchComicInfo(url)
+    }
+
+    /**
+     * 获取漫画
+     *
+     * @param chapterUrl
+     */
+    suspend fun obtainComicImage(chapterUrl: String): Flow<String> {
+        return fetchHandle.obtainComicImage(chapterUrl)
     }
 }

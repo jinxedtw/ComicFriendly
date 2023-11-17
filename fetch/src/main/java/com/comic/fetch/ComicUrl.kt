@@ -1,6 +1,6 @@
 package com.comic.fetch
 
-object ComicUrl {
+internal object ComicUrl {
 
     /**
      * 腾讯搜索链接
@@ -14,5 +14,12 @@ object ComicUrl {
      *
      * e.g: https://ac.qq.com/Comic/comicInfo/id/650800
      */
-    const val TencentComicDetail = "http://ac.qq.com/Comic/comicInfo/id/"
+    const val TencentComicInfoUrl = "http://ac.qq.com/Comic/comicInfo/id/"
+
+    /**
+     *  漫画具体页面
+     *
+     *  e.g: https://ac.qq.com/ComicView/index/id/650800/cid/530
+     */
+    const val TencentComicChapterUrl = "https://ac.qq.com/"
 }

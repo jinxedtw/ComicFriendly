@@ -41,9 +41,9 @@ data class Comic(
     var chaptersUrl: List<String> = arrayListOf(),
 
     /**
-     * 章节图片
+     * 章节地址 to 每一章的图片
      */
-    var comicImage: List<String> = arrayListOf(),
+    var chapterImages: Map<String, String> = emptyMap(),
 
     /**
      * 标签
