@@ -54,7 +54,7 @@ object ComicFetchManager {
      *
      * @param chapterUrl
      */
-    suspend fun obtainComicImage(chapterUrl: String): Flow<String> {
+    suspend fun obtainComicImage(chapterUrl: String): List<String> {
         return fetchHandle.obtainComicImage(chapterUrl)
     }
 }

@@ -102,10 +102,10 @@ internal object TencentFetchHandler : FetchHandler {
         }
     }
 
-    override suspend fun obtainComicImage(chapterUrl: String): Flow<String> {
-        return flow<String> {
-
-        }.flowOn(Dispatchers.IO)
+    override suspend fun obtainComicImage(chapterUrl: String): List<String> {
+        val doc = Jsoup.connect(chapterUrl).get()
+        val comicImages = doc.getElementById("comicContain").getElementsByClass("loaded").attr("src")
+        return emptyList()
     }
 
 

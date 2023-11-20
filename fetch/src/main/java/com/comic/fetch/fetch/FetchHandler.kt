@@ -8,5 +8,5 @@ interface FetchHandler {
 
     suspend fun fetchComicInfo(url: String): Comic
 
-    suspend fun obtainComicImage(chapterUrl: String): Flow<String>
+    suspend fun obtainComicImage(chapterUrl: String): List<String>
 }

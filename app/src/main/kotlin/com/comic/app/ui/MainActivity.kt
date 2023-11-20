@@ -39,6 +39,7 @@ import coil.compose.AsyncImage
 import com.comic.app.R
 import com.comic.app.ui.theme.AppTheme
 import com.comic.fetch.ComicFetchManager
+import com.comic.fetch.test.fetchImage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -49,7 +50,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AppTheme {
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    LearnModifier()
+                    LearnBaseWidget()
                 }
             }
         }
@@ -103,13 +104,15 @@ fun LearnBaseWidget() {
         Text(modifier = Modifier.align(Alignment.Start), text = "July 2021")
         Button(
             onClick = {
-                scope.launch(Dispatchers.IO) {
+//                scope.launch(Dispatchers.IO) {
 //                    ComicFetchManager.searchComic("王者").collect{
 //                        Log.i(ComicFetchManager.TAG,it.toString())
 //                    }
-                    val comic = ComicFetchManager.fetchComicInfo("https://ac.qq.com/Comic/comicInfo/id/650800")
-                    Log.i(ComicFetchManager.TAG, comic.toString())
-                }
+
+//                    val comic = ComicFetchManager.fetchComicInfo("https://ac.qq.com/Comic/comicInfo/id/650800")
+//                    Log.i(ComicFetchManager.TAG, comic.toString())
+//                }
+                fetchImage()
             },
             modifier = Modifier.align(Alignment.End)
         ) {
