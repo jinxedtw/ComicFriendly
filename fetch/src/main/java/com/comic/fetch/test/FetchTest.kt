@@ -27,11 +27,11 @@ fun main() {
 
     // 包子漫画
 //    val doc3 = Jsoup.connect("https://www.dzmanga.com/comic/chapter/diamudiguowuyucongduantoutaikaishidegongzhuzhuanshengnizhuanchuancomic-bingyuewangtobooks/0_24.html").get()
-//    println(doc3)
+    println("123")
 
     // 极速漫画
 //    val doc4 = Jsoup.connect("https://www.1kkk.com/ch2-1015167-p2/").get()
-//    println(doc4)
+    println("123")
 }
 
 @SuppressLint("SetJavaScriptEnabled")
